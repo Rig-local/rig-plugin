@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "rig",
-  "version": "1.0.0",
-  "description": "Local runtime context for AI coding agents. Cloud MCP for project status, health, ports, and gated start/stop/restart — plus skills to install and link the Mac hub.",
+  "version": "1.1.0",
+  "description": "Local runtime context for AI coding agents. Cloud MCP at https://api.userig.app/mcp for project status, health, ports, and gated start/stop/restart — plus skills to install and link the Mac hub.",
   "author": {
     "name": "RIG",
     "url": "https://userig.app"
@@ -19,6 +19,7 @@
     "cursor",
     "gemini",
     "copilot",
-    "codex"
+    "codex",
+    "grok"
   ]
 }

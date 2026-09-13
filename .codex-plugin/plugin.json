@@ -1,0 +1,31 @@
+{
+  "name": "rig",
+  "version": "1.1.0",
+  "description": "Rig — local runtime context for AI coding agents. Cloud MCP at api.userig.app/mcp plus skills to install and link the Mac hub.",
+  "author": {
+    "name": "RIG",
+    "url": "https://userig.app"
+  },
+  "homepage": "https://userig.app",
+  "keywords": ["mcp", "local-runtime", "devtools", "codex", "chatgpt"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Rig",
+    "shortDescription": "Manage local apps and ports",
+    "longDescription": "Rig is the local runtime context engine for AI coding agents on Mac. This plugin connects ChatGPT and Codex to Rig’s public cloud MCP (https://api.userig.app/mcp) for project status, health, ports, and gated start/stop/restart on machines linked to your Rig account. Full localhost log tails and advanced hub tools work when Rig is open on your Mac and linked locally. Install guidance is included as skills.",
+    "developerName": "RIG",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://userig.app",
+    "privacyPolicyURL": "https://userig.app/privacy",
+    "termsOfServiceURL": "https://userig.app/terms",
+    "defaultPrompt": [
+      "List my Rig projects and show which ones are running.",
+      "Check Rig health and which Mac hubs are online.",
+      "Help me set up my first project in Rig."
+    ],
+    "brandColor": "#12171f",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png"
+  }
+}

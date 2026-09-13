@@ -5,4 +5,4 @@ alwaysApply: true
 
 When Rig MCP tools are connected, use them for project status, logs, ports, start/stop/restart, git, and db — not `npm run`, `lsof`, or raw git/db in the shell.
 
-Mutating tools need `confirm: true`. If tools 401 or are missing, follow the setup skill. Do not invent tokens or a second MCP URL. Cloud endpoint is `https://api.userig.app/mcp`. The full hub is loopback while Rig.app is open (Connections → Link).
+Mutating tools need `confirm: true`. If tools 401 or are missing, follow the setup skill. Do not invent tokens or a second MCP URL. Cloud endpoint is `https://api.userig.app/mcp` (nine tools). The full hub is loopback while Rig.app is open (Connections → Link). No checkout or plan upsell.

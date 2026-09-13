@@ -23,6 +23,9 @@ Add this server. Transport is Streamable HTTP. Auth is OAuth 2.1.
 - Windsurf: `~/.codeium/windsurf/mcp_config.json` uses `"serverUrl"` not `"url"`
 - Gemini CLI: `gemini mcp add --transport http rig https://api.userig.app/mcp` or `gemini extensions install https://github.com/Rig-local/rig-plugin`
 - Codex: `codex mcp add rig --url https://api.userig.app/mcp`
+- Grok Build: install from the xAI plugin marketplace once listed, or add the same HTTPS MCP URL
+
+Cloud tools (9): `list_projects`, `get_project`, `get_status`, `get_logs`, `get_health`, `who_owns_port`, `start_project`, `stop_project`, `restart_project`. Writes need `confirm: true`.
 
 If the client needs a public OAuth client ID, tell the user to sign in via the browser prompt. Do not invent a client ID.
 
