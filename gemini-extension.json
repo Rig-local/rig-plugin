@@ -1,0 +1,11 @@
+{
+  "name": "rig",
+  "version": "1.0.0",
+  "description": "Local runtime context for AI coding agents. Cloud MCP for project status, health, ports, and gated start/stop/restart.",
+  "mcpServers": {
+    "rig": {
+      "httpUrl": "https://api.userig.app/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

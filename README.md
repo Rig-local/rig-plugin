@@ -1,67 +1,148 @@
-# Rig plugin for Claude Code
+<p align="center">
+  <img src="assets/og.png" width="920" alt="RIG for agents — Claude, Cursor, Gemini, Copilot, Codex">
+</p>
 
-Public packaging for the [Rig](https://userig.app) Claude Code plugin. This repository is **not** the Rig product source. The Mac app and Cloud API stay private.
+<p align="center">
+  <strong>One plugin. Every coding agent.</strong><br>
+  Cloud MCP + skills so they stop guessing from a terminal.
+</p>
 
-Rig is the local runtime context engine for AI coding agents. This plugin:
+<p align="center">
+  <a href="https://userig.app">userig.app</a>
+  ·
+  <a href="https://userig.app/docs/mcp">docs</a>
+  ·
+  <a href="https://userig.app/download">download Mac app</a>
+</p>
 
-- Connects Claude Code to Rig’s **cloud MCP** at `https://api.userig.app/mcp` (OAuth 2.1, Streamable HTTP)
-- Adds skills and slash commands for status, health, logs, and gated start/stop
-- Documents how to install the Mac app and **Link** Claude for the full local hub
+<p align="center">
+  <img src="https://img.shields.io/badge/MCP-Streamable_HTTP-c9ef35?labelColor=12171f" alt="MCP">
+  <img src="https://img.shields.io/badge/Claude-plugin-c9ef35?labelColor=12171f" alt="Claude">
+  <img src="https://img.shields.io/badge/Cursor-plugin-c9ef35?labelColor=12171f" alt="Cursor">
+  <img src="https://img.shields.io/badge/Gemini-extension-c9ef35?labelColor=12171f" alt="Gemini">
+  <img src="https://img.shields.io/badge/license-Apache_2.0-c9ef35?labelColor=12171f" alt="Apache 2.0">
+</p>
 
-OpenAI / Codex packaging lives separately and is not in this repo.
+This repository is **packaging only**. It is not the Rig product source. The Mac app and Cloud API stay private.
+
+## What you get
+
+| Surface | When | What the agent can do |
+| --- | --- | --- |
+| **Cloud MCP** `https://api.userig.app/mcp` | Signed in to Rig Cloud | Catalog, health, ports, gated start / stop / restart on linked Macs |
+| **Local hub** | Rig.app open → Connections → **Link** | Full hub: live logs, git/db, env, fleet/mesh |
+
+Writes always need `confirm: true`. No checkout. No invented tokens.
+
+```mermaid
+flowchart LR
+  A[Claude · Cursor · Gemini · Copilot · Codex] -->|OAuth| C[api.userig.app/mcp]
+  A -->|Link| H[Rig.app hub :47823]
+  C --> M[Your Macs]
+  H --> M
+```
 
 ## Install
 
-Until the plugin is listed in the Claude community marketplace:
+### One URL (most clients)
 
-```bash
-git clone https://github.com/Rig-local/rig-plugin.git
-claude --plugin-dir ./rig-plugin
+```
+https://api.userig.app/mcp
 ```
 
-After listing, install from the community marketplace as `rig` (namespace `/rig:…`).
+OAuth 2.1, Streamable HTTP. The agent signs in in the browser on first tool call.
 
-Reload with `/reload-plugins` if you already have a session open.
-
-### Commands
-
-| Command | What it does |
+| Agent | Command / file |
 | --- | --- |
+| **Claude Code** | `claude --plugin-dir ./rig-plugin` · then `/plugin install` from the community marketplace once listed |
+| **Cursor** | [cursor.directory/plugins/new](https://cursor.directory/plugins/new) with this repo, or paste the JSON below into `~/.cursor/mcp.json` |
+| **Gemini CLI** | `gemini extensions install https://github.com/Rig-local/rig-plugin` |
+| **VS Code / Copilot** | MCP: Add Server → HTTP → the URL above (config key is `servers`) |
+| **Codex** | `codex mcp add rig --url https://api.userig.app/mcp` |
+| **Windsurf** | Cascade → Manage MCPs — field is `serverUrl`, not `url` |
+| **Cline** | Point it at [`llms-install.md`](./llms-install.md) |
+
+Cursor / Claude JSON:
+
+```json
+{
+  "mcpServers": {
+    "rig": {
+      "type": "http",
+      "url": "https://api.userig.app/mcp"
+    }
+  }
+}
+```
+
+VS Code:
+
+```json
+{
+  "servers": {
+    "rig": {
+      "type": "http",
+      "url": "https://api.userig.app/mcp"
+    }
+  }
+}
+```
+
+Windsurf:
+
+```json
+{
+  "mcpServers": {
+    "rig": {
+      "serverUrl": "https://api.userig.app/mcp"
+    }
+  }
+}
+```
+
+### Local hub (full tools)
+
+1. [Download Rig](https://userig.app/download)
+2. Open **Connections** → start the MCP hub → **Link** the agent you actually use
+3. Prefer Link over hand-editing a bearer token
+
+## Skills and commands
+
+Same skills load in Claude, Cursor, and Gemini.
+
+| Invoke | Does |
+| --- | --- |
+| `/rig:setup` | Install the Mac app, connect cloud MCP, Link the local hub |
+| `/rig:rig-runtime` | When to use Rig tools instead of the terminal |
 | `/rig:status` | List projects and run state |
 | `/rig:health` | Account / hub health |
-| `/rig:logs` | Recent logs for a project |
-| `/rig:start` | Start a project (`confirm: true`) |
-| `/rig:stop` | Stop a project (`confirm: true`) |
+| `/rig:logs` | Recent logs |
+| `/rig:start` · `/rig:stop` | Lifecycle with `confirm: true` |
 
-Skills: `/rig:setup` (install + connect), `/rig:rig-runtime` (when to use Rig tools).
+## Layout
 
-## Cloud vs local hub
-
-| Surface | When | Tools |
-| --- | --- | --- |
-| Cloud MCP (this plugin) | Signed in to Rig Cloud | Catalog, health, ports, gated start/stop/restart on linked Macs |
-| Local hub | Rig.app open → Connections → Claude → Link | Full hub: live logs, git/db, env, fleet/mesh |
-
-Writes always need `confirm: true`.
-
-Docs: [userig.app/docs/mcp](https://userig.app/docs/mcp) · [Connect Claude](https://userig.app/docs/mcp-claude)
-
-## Privacy policy
-
-- **Data:** The cloud MCP sees the signed-in Rig account’s project catalog, device presence, and lifecycle commands you confirm. The local hub stays on your Mac.
-- **Storage:** Rig Cloud stores account, catalog, and device metadata per [https://userig.app/privacy](https://userig.app/privacy).
-- **Third parties:** Anthropic receives tool results you allow Claude Code to send. Rig does not sell that data.
-- **Retention:** Account data follows the privacy policy. Local hub logs stay on disk on your Mac.
-- **Contact:** [https://help.userig.app](https://help.userig.app)
-
-Terms: [https://userig.app/terms](https://userig.app/terms)
-
-## Validate
+```
+plugin.json                 Agent Plugins (Cursor + portable)
+mcp.json                    Agent Plugins MCP (streamable-http)
+.mcp.json                   Claude Code + cursor.directory
+.claude-plugin/plugin.json  Claude Code
+.cursor-plugin/plugin.json  Cursor Marketplace
+gemini-extension.json       Gemini CLI gallery
+skills/                     Agent Skills
+commands/                   Slash commands
+rules/                      Cursor: prefer Rig MCP
+```
 
 ```bash
 claude plugin validate . --strict
 ```
 
+## Privacy
+
+Cloud MCP sees the signed-in account’s catalog, device presence, and lifecycle commands you confirm. The local hub stays on your Mac.
+
+[Privacy](https://userig.app/privacy) · [Terms](https://userig.app/terms) · [Support](https://help.userig.app)
+
 ## License
 
-Apache License 2.0. The plugin packaging in this repository is open. Rig.app and the Cloud API are proprietary (Rich Harrington Ltd).
+Apache License 2.0 for this packaging. Rig.app and the Cloud API are proprietary (Rich Harrington Ltd).

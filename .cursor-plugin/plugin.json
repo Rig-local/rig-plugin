@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "rig",
   "displayName": "Rig",
   "version": "1.0.0",
@@ -11,5 +10,6 @@
   "homepage": "https://userig.app/docs/mcp",
   "repository": "https://github.com/Rig-local/rig-plugin",
   "license": "Apache-2.0",
-  "keywords": ["mcp", "local-runtime", "devtools", "macos"]
+  "keywords": ["mcp", "local-runtime", "devtools", "macos"],
+  "logo": "assets/logo.svg"
 }

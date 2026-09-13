@@ -1,6 +1,6 @@
 ---
 name: rig-runtime
-description: Use Rig MCP for local project runtime — status, logs, ports, start/stop/restart — instead of guessing from the terminal. Use when the user mentions Rig, managed project servers, ports, fleet Macs, or asks what’s running.
+description: Use Rig MCP for local project runtime — status, logs, ports, start/stop/restart — instead of guessing from the terminal. Use when the user mentions Rig, managed project servers, ports, fleet Macs, or asks what’s running. Works in Claude, Cursor, Gemini, Copilot, Codex, and Windsurf.
 ---
 
 # Rig runtime
@@ -9,10 +9,10 @@ Prefer Rig MCP tools over `npm run`, `lsof`, or raw git/db commands when Rig is 
 
 ## Which surface you have
 
-- **Cloud MCP** (`https://api.userig.app/mcp`, this plugin): catalog, health, ports, gated lifecycle on machines linked to the signed-in Rig account.
-- **Local hub** (Rig app open + Connections → Claude → Link): full tools including live logs, resources, git/db, env, fleet/mesh. If a tool is missing, follow the setup skill.
+- **Cloud MCP** (`https://api.userig.app/mcp`): catalog, health, ports, gated lifecycle on machines linked to the signed-in Rig account.
+- **Local hub** (Rig app open + Connections → Link): full tools including live logs, resources, git/db, env, fleet/mesh. If a tool is missing, follow the setup skill.
 
-If tools fail: follow `/rig:setup`. Do not invent credentials or claim the hub is up when it is not.
+If tools fail: follow the setup skill. Do not invent credentials or claim the hub is up when it is not.
 
 ## Writes need confirm
 
