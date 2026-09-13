@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "rig",
+  "displayName": "Rig",
+  "version": "1.0.0",
+  "description": "Local runtime context for AI coding agents. Connects Claude Code to Rig’s cloud MCP for project status, health, ports, and gated start/stop/restart, plus skills to install and link the Mac hub.",
+  "author": {
+    "name": "RIG",
+    "url": "https://userig.app"
+  },
+  "homepage": "https://userig.app/docs/mcp",
+  "repository": "https://github.com/Rig-local/rig-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["mcp", "local-runtime", "devtools", "macos", "projects"]
+}
