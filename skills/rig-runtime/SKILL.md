@@ -9,7 +9,7 @@ Prefer Rig MCP tools over `npm run`, `lsof`, or raw git/db commands when Rig is 
 
 ## Which surface you have
 
-- **Cloud MCP** (`https://api.userig.app/mcp`): OAuth 2.1 or account PAT. Nine tools — catalog, health, ports, gated lifecycle on machines linked to the signed-in Rig account.
+- **Cloud MCP** (`https://api.userig.app/mcp`): OAuth 2.1, or the sensitive plugin option `rig_account_pat` when the user sets one. Nine tools — catalog, health, ports, gated lifecycle on machines linked to the signed-in Rig account. Do not read tokens from the environment or local files.
 - **Local hub** (Rig.app open → Connections → **Link**): full tools including live logs, resources, git/db, env, fleet/mesh. If a tool is missing, follow the setup skill.
 
 If tools fail: follow the setup skill. Do not invent credentials or claim the hub is up when it is not.

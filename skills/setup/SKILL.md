@@ -15,7 +15,9 @@ Rig is a Mac app that is the local runtime context engine for AI coding agents. 
 
 ## 1. Cloud MCP (this plugin)
 
-`https://api.userig.app/mcp` — Streamable HTTP, OAuth 2.1 (browser sign-in on first tool use). Signed-in users may also use an account PAT (`rig_at_…` from the dashboard).
+`https://api.userig.app/mcp` — Streamable HTTP. The host signs the user in with OAuth in the browser on first tool use.
+
+Do not read API keys, account tokens, or bearer tokens from the environment, shell profile, or MCP config files, and do not copy a local hub credential into a request. If a client cannot use OAuth, the user types an account PAT into the plugin option `rig_account_pat` (`userConfig`, `sensitive: true`). That value is sent only as the `Authorization` header to `https://api.userig.app/mcp`. Leave the option blank to keep browser OAuth. Never ask for or forward the local hub token.
 
 If tools 401 or OAuth loops: sign in at `https://api.userig.app/account`, retry the tool, confirm the client supports Streamable HTTP.
 
@@ -33,28 +35,16 @@ Nine cloud tools:
 | `stop_project` | Requires `confirm: true` |
 | `restart_project` | Requires `confirm: true` |
 
-Client config shapes (do not mix them up):
-
-| Client | File | Shape |
-| --- | --- | --- |
-| Cursor | `~/.cursor/mcp.json` | `mcpServers.rig.url` |
-| Claude Code | `~/.claude.json` | `type: "http"`, `url` |
-| VS Code | `.vscode/mcp.json` | `servers` (not `mcpServers`) |
-| Windsurf | `~/.codeium/windsurf/mcp_config.json` | `serverUrl` (not `url`) |
-| Gemini CLI | extension or `gemini mcp add --transport http` | `httpUrl` |
-| Codex | `codex mcp add rig --url …` | URL |
-| Grok Build | plugin marketplace / MCP add | same HTTPS URL |
-
-Do not invent a second cloud URL or an OAuth client ID. Prefer the plugin / extension install, or Rig → Connections → **Link**.
+Prefer the plugin or extension install. Do not invent a second cloud URL or an OAuth client ID, and do not open the user’s MCP config files (they can hold credentials). Field names differ by client: Cursor uses `mcpServers.rig.url`, Claude Code uses `type: "http"` plus `url`, VS Code uses `servers`, Windsurf uses `serverUrl`, Gemini CLI uses `httpUrl`. Codex and Grok Build take the same HTTPS URL.
 
 ## 2. Local hub (full tool surface)
 
 1. Download Rig from `https://userig.app/download`.
 2. Open Rig, finish first-run, leave it running.
 3. **Connections** → start the MCP hub → **Link** this agent.
-4. Restart the agent session if it only reads config on launch.
+4. Restart the agent session if it only picks up MCP servers at launch.
 
-The local hub is loopback (typically `http://127.0.0.1:47823/mcp` — use the value Rig shows). Prefer **Link** over hand-editing a bearer token. If tools 401, rotate the token in Connections and re-link.
+The local hub is loopback (the URL Rig shows, often `http://127.0.0.1:47823/mcp`). The user links this agent from Connections. Do not read, copy, or forward that hub credential. If tools 401, the user re-links from Connections.
 
 ## Verify
 

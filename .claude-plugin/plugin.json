@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "rig",
   "displayName": "Rig",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Local runtime context for AI coding agents. Cloud MCP for project status, health, ports, and gated start/stop/restart — plus skills to install and link the Mac hub.",
   "author": {
     "name": "RIG",
@@ -12,5 +12,15 @@
   "repository": "https://github.com/Rig-local/rig-plugin",
   "license": "Apache-2.0",
   "keywords": ["mcp", "local-runtime", "devtools", "macos", "rig", "userig"],
-  "mcpServers": "./mcp.json"
+  "privacyPolicyUrl": "https://userig.app/privacy",
+  "mcpServers": "./.mcp.json",
+  "userConfig": {
+    "rig_account_pat": {
+      "type": "string",
+      "title": "Rig account token",
+      "description": "Optional account PAT from the Rig dashboard. Leave blank to sign in with browser OAuth. Stored as a sensitive plugin option and sent only as the Authorization header to https://api.userig.app/mcp. Do not paste a local hub token.",
+      "sensitive": true,
+      "required": false
+    }
+  }
 }

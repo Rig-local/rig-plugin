@@ -30,7 +30,7 @@ This repository is **packaging only**. It is not the Rig product source. The Mac
 
 | Surface | When | What the agent can do |
 | --- | --- | --- |
-| **Cloud MCP** `https://api.userig.app/mcp` | Signed in to Rig Cloud (OAuth 2.1 or account PAT) | Nine tools: catalog, health, ports, gated start / stop / restart on linked Macs |
+| **Cloud MCP** `https://api.userig.app/mcp` | Signed in to Rig Cloud (OAuth 2.1, or the optional sensitive plugin option for an account PAT) | Nine tools: catalog, health, ports, gated start / stop / restart on linked Macs |
 | **Local hub** | Rig.app open → Connections → **Link** | Full hub: live logs, git/db, env, fleet/mesh |
 
 Writes always need `confirm: true`. No checkout. No invented tokens.
@@ -120,7 +120,7 @@ Windsurf:
 
 1. [Download Rig](https://userig.app/download)
 2. Open **Connections** → start the MCP hub → **Link** the agent you actually use
-3. Prefer Link over hand-editing a bearer token
+3. Link the agent from the app. Agents must not copy a hub credential out of local files.
 
 ## Skills and commands
 
@@ -158,7 +158,7 @@ claude plugin validate . --strict
 
 ## Privacy
 
-Cloud MCP sees the signed-in account’s catalog, device presence, and lifecycle commands you confirm. The local hub stays on your Mac.
+Cloud MCP sees the signed-in account’s catalog, device presence, and lifecycle commands you confirm. The local hub stays on your Mac. Privacy policy: https://userig.app/privacy
 
 [Privacy](https://userig.app/privacy) · [Terms](https://userig.app/terms) · [Support](https://help.userig.app)
 

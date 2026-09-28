@@ -1,7 +1,7 @@
 {
   "name": "rig",
   "displayName": "Rig",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Local runtime context for AI coding agents. Cloud MCP for project status, health, ports, and gated start/stop/restart — plus skills to install and link the Mac hub.",
   "author": {
     "name": "RIG",
